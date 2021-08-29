@@ -61,7 +61,12 @@ inquirer.prompt([
             return "Please enter a positive number greater than zero.";
         },
     },
-])
+]).then(answers => {
+    const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+    teamMembers.push(manager);
+    idArray.push(answers.managerId);
+    
+})
 
 
 
