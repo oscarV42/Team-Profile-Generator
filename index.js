@@ -65,11 +65,24 @@ inquirer.prompt([
     const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
     teamMembers.push(manager);
     idArray.push(answers.managerId);
-    
+    createTeam();
 })
+}
 
+function createTeam() {
 
-
+    inquirer.prompt([
+        {
+            type: 'list',
+            name: 'memberChoice',
+            message: "WHich type of team member would you like to add?", 
+            choices: [
+                "Engineer",
+                "Intern",
+                "I don't want to add any more team members",
+            ]
+        }
+    ])
 }
 
 appMenu();
