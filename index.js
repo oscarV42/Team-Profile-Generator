@@ -82,7 +82,18 @@ function createTeam() {
                 "I don't want to add any more team members",
             ]
         }
-    ])
+    ]).then(userChoice => {
+        switch(userChoice.memberChoice){
+        case 'Engineer':
+            addEngineer();
+            break;
+            case 'Intern':
+                addIntern();
+                break;
+                default:
+                    buildTeam();
+        }
+        })
 }
 
 appMenu();
