@@ -10,3 +10,25 @@ const outputPath = path.join(OUT_DIR, 'team.html');
 
 const teamMembers = [];
 const idArray = [];
+
+function appMenu() {
+console.log('Please build your team');
+inquirer.prompt([
+    {
+        type: 'input',
+        name: 'managerName',
+        message: "What is the team manager's name?",
+        validate: answer => {
+            if(answer !== "") {
+                return true;
+            }
+            return 'Please enter at leat one character!';
+        }
+    }
+])
+
+
+
+}
+
+appMenu();
