@@ -201,7 +201,7 @@ function appMenu() {
         },
         {
             type: 'input',
-            name: 'interSchool',
+            name: 'internSchool',
             message: "What is your intern's school?",
             validate: answer => {
                 if(answer !== ""){
