@@ -166,7 +166,7 @@ function addIntern() {
                 if(answer !== ""){
                     return true;
                 }
-                return "Please enter atleast one character.";
+                return "Please enter at least one character.";
             }
         },
         {
@@ -183,6 +183,29 @@ function addIntern() {
                     }
                 }
                 return "Please enter a positive number greater than zero.";
+            }
+        },
+        {
+            type: 'input',
+            name: 'internEmail',
+            message: "What is your intern's email address?",
+            validate: answer => {
+                const pass = answer.match(/\S+@\S+\.\S+/);
+                if(pass){
+                    return true;
+                }
+                return "Please enter a valid email address";
+            }
+        },
+        {
+            type: 'input',
+            name: 'interSchool',
+            message: "What is your intern's school?",
+            validate: answer => {
+                if(answer !== ""){
+                    return true;
+                }
+                return "Please enter at least one character."
             }
         },
     ])
