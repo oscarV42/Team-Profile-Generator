@@ -8,7 +8,7 @@ test('Can set Intern class school key value via constructor', () => {
 
 test('Should return "Intern" via getRole()', () => {
     const val = 'Intern';
-    const test = new Engineer('Foo', 4, 'someone@ex.com', 'GT');
+    const test = new Intern('Foo', 4, 'someone@ex.com', 'GT');
     expect(test.getRole()).toBe(val);
 });
 
