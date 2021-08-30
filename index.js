@@ -75,7 +75,7 @@ function createTeam() {
         {
             type: 'list',
             name: 'memberChoice',
-            message: "WHich type of team member would you like to add?", 
+            message: "Which type of team member would you like to add?", 
             choices: [
                 "Engineer",
                 "Intern",
@@ -96,4 +96,31 @@ function createTeam() {
         })
 }
 
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'engineerName',
+            message: "What is your engineer's name?",
+            validate: answer => {
+                if(answer !== ""){
+                    return true;
+                }
+                return "Please enter at leat one character.";
+            }
+        },
+        {
+            type:'input',
+            name: 'engineerId',
+            message: "What is your engineer's id?",
+            validate: answer => {
+                const pass = answer.match(/^[1-9]\d*$/);
+                if(pass){
+                    return true;
+                }
+                return "Please enter a positive number greater than zero.";
+            }
+        },
+    ])
+}
 appMenu();
