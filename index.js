@@ -146,6 +146,9 @@ function addEngineer() {
         },
     ]).then(answers => {
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        teamMembers.push(engineer);
+        idArray.push(answers.engineerId);
+        createTeam();
     });
 }
 appMenu();
