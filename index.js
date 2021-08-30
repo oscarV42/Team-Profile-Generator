@@ -12,9 +12,10 @@ const teamMembers = [];
 const idArray = [];
 
 function appMenu() {
-console.log('Please build your team');
-inquirer.prompt([
-    {
+    function createManager() { 
+        console.log('Please build your team');
+        inquirer.prompt([
+        {
         type: 'input',
         name: 'managerName',
         message: "What is the team manager's name?",
@@ -24,8 +25,8 @@ inquirer.prompt([
             }
             return 'Please enter at leat one character!';
         }
-    },
-    {
+        },
+        {
         type: 'input',
         name: 'managerId',
         message: "What is the team manager's id?",
@@ -36,8 +37,8 @@ inquirer.prompt([
             }
             return "Please enter a positive number greater than zero.";
         }
-    },
-    {
+        },
+        {
         type: 'input',
         name: 'managerEmail',
         message: "What is the team manager's email?",
@@ -48,8 +49,8 @@ inquirer.prompt([
             }
             return "Please enter a valid email address.";
         }
-    },
-    {
+        },
+        {
         type: 'input',
         name: 'managerOfficeNumber',
         message: "What is the team manager's office number?",
@@ -60,16 +61,16 @@ inquirer.prompt([
             }
             return "Please enter a positive number greater than zero.";
         },
-    },
-]).then(answers => {
-    const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
-    teamMembers.push(manager);
-    idArray.push(answers.managerId);
-    createTeam();
-})
-}
+        },
+    ]).then(answers => {
+        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+        teamMembers.push(manager);
+        idArray.push(answers.managerId);
+        createTeam();
+    })
+    }
 
-function createTeam() {
+    function createTeam() {
 
     inquirer.prompt([
         {
@@ -94,10 +95,10 @@ function createTeam() {
                     buildTeam();
         }
         })
-}
+    }
 
-function addEngineer() {
-    inquirer.prompt([
+    function addEngineer() {
+        inquirer.prompt([
         {
             type: 'input',
             name: 'engineerName',
@@ -148,16 +149,16 @@ function addEngineer() {
                 return "Please enter at least one character.";
             }
         },
-    ]).then(answers => {
+        ]).then(answers => {
         const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
         teamMembers.push(engineer);
         idArray.push(answers.engineerId);
         createTeam();
-    });
-}
+        });
+    }
 
-function addIntern() {
-    inquirer.prompt([
+    function addIntern() {
+        inquirer.prompt([
         {
             type: 'input',
             name: 'internName',
@@ -208,12 +209,22 @@ function addIntern() {
                 return "Please enter at least one character."
             }
         },
-    ]).then(answers => {
+        ]).then(answers => {
         const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
         teamMembers.push(intern);
         idArray.push(answers.internId);
         createTeam();
-    });
+        });
+    }
+
+    function  buildTeam() {
+        if(!fs.existsSync(OUT_DIR)) {
+            fs.mkdir(OUT_DIR)
+        }
+        fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+    }
+
+    createManager();
 }
 
 appMenu();
