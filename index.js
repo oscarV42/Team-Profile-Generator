@@ -62,17 +62,17 @@ function appMenu() {
             return "Please enter a positive number greater than zero.";
         },
         },
-    ]).then(answers => {
+        ]).then(answers => {
         const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
         teamMembers.push(manager);
         idArray.push(answers.managerId);
         createTeam();
-    })
+        })
     }
 
     function createTeam() {
 
-    inquirer.prompt([
+        inquirer.prompt([
         {
             type: 'list',
             name: 'memberChoice',
@@ -83,7 +83,7 @@ function appMenu() {
                 "I don't want to add any more team members",
             ]
         }
-    ]).then(userChoice => {
+        ]).then(userChoice => {
         switch(userChoice.memberChoice){
         case 'Engineer':
             addEngineer();
