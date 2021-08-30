@@ -7,6 +7,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.resolve(__dirname, 'dist');
 const outputPath = path.join(OUT_DIR, 'team.html');
+const render = require('./src/page-template.js');
 
 const teamMembers = [];
 const idArray = [];
