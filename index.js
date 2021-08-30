@@ -208,7 +208,12 @@ function addIntern() {
                 return "Please enter at least one character."
             }
         },
-    ])
+    ]).then(answers => {
+        const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+        teamMembers.push(intern);
+        idArray.push(answers.internId);
+        createTeam();
+    });
 }
 
 appMenu();
