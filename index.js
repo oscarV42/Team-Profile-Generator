@@ -115,8 +115,12 @@ function addEngineer() {
             message: "What is your engineer's id?",
             validate: answer => {
                 const pass = answer.match(/^[1-9]\d*$/);
-                if(pass){
-                    return true;
+                if (pass) {
+                    if (idArray.includes(answer)) {
+                      return "This ID is already taken. Please enter a different number.";
+                    } else {
+                      return true;
+                    }
                 }
                 return "Please enter a positive number greater than zero.";
             }
@@ -151,4 +155,37 @@ function addEngineer() {
         createTeam();
     });
 }
+
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'internName',
+            message: "What is your intern's name?",
+            validate: answer => {
+                if(answer !== ""){
+                    return true;
+                }
+                return "Please enter atleast one character.";
+            }
+        },
+        {
+            type: 'input',
+            name: 'internId',
+            message: "What is your intern's id?",
+            validate: answer => {
+                const pass = answer.match(/^[1-9]\d*$/);
+                if (pass) {
+                    if (idArray.includes(answer)) {
+                      return "This ID is already taken. Please enter a different number.";
+                    } else {
+                      return true;
+                    }
+                }
+                return "Please enter a positive number greater than zero.";
+            }
+        },
+    ])
+}
+
 appMenu();
