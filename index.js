@@ -121,6 +121,31 @@ function addEngineer() {
                 return "Please enter a positive number greater than zero.";
             }
         },
-    ])
+        {
+            type: 'input',
+            name: 'engineerEmail',
+            message: "What is your engineer's email?",
+            validate: answer => {
+                const pass = answer.match(/\S+@\S+\.\S+/);
+                if(pass){
+                    return true;
+                }
+                return "Please enter a valid email address.";
+            }
+        },
+        {
+            type: 'input',
+            name: 'engineerGithub',
+            message: "What is your engineer's GitHub username?",
+            validate: answer => {
+                if(answer !== ""){
+                    return true;
+                }
+                return "Please enter at least one character.";
+            }
+        },
+    ]).then(answers => {
+        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+    });
 }
 appMenu();
