@@ -35,7 +35,7 @@ Use Node.js command line interface to run application
 
 Please refer to this demo gif:
 
-[!Demonstration](./assets/Demo.gif)
+![Demonstration](./assets/Demo.gif)
 
 ## License
 
