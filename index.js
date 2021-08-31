@@ -223,6 +223,7 @@ function appMenu() {
             fs.mkdir(OUT_DIR)
         }
         fs.writeFileSync(outputPath, render(teamMembers), "utf-8");
+        console.log('Successfully generated HTML!');
     }
 
     createManager();
