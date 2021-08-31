@@ -31,7 +31,7 @@ To install necessary dependencies, run the following command:
 
 ## Usage
 
-Please refer to description
+Use Node.js command line interface to run application
 
 ## License
 
@@ -42,6 +42,8 @@ This project is licensed under the MIT license
 Best way to contribute is by contacting me or posting issues
 
 ## Tests
+
+Run the following command to run tests:
 
 ---
 
